@@ -8,14 +8,16 @@ import numpy as np
 
 """
 
-usinp = "21022017-2.dat"#ввод имени, открываемого файла
+usinp = (raw_input('-> '))#ввод имени, открываемого файла
 #print "user input: ", type(usinp)
 len_usinp = len(str(usinp))
 #print type(len_usinp)
-usinp_e = usinp[0:-4] + 'e' + usinp[-4:len_usinp]
+#usinp_e = usinp[0:-4] + 'e' + usinp[-4:len_usinp]
+usinp_e = usinp + 'e'
+
 #print usinp_e
 #название файла без разширения, для отображения на граффике
-usinp_title = usinp[0:-4]
+usinp_title = usinp
 #
 s = open(usinp).read()#прочитали исходный файл
 
@@ -50,21 +52,7 @@ data = mv
 #print x
 #print type(data)
 """
-for i in data:
-    if -1<i<1:
-        data=0
-        #print 'i in for loop for 0 = ', i
-        #i=0
-        #print 'and now i is = ', i
 
-    elif -301.0<i<-299.0:
-        data = -300
-        #print i
-    else:
-        print "error"
-print data
-"""
-"""
 """
 
 #зона вывода графф
@@ -75,9 +63,10 @@ plt.subplots_adjust(hspace=0.4)#
 plt.subplot(2,1,1)
 plt.plot(sec, ma)
 plt.xlabel('time, sec')
-plt.ylabel('I, mA')
+plt.ylabel('I, micro A')
 plt.title(u'Изменение тока по времени', fontsize=12)
 plt.grid(True)
+"""
 #второй графф
 plt.subplot(2,1,2)
 plt.plot(mv, ma, '-r')
@@ -85,7 +74,7 @@ plt.xlabel('Volts, mV')
 plt.ylabel('I, mA')
 plt.title(u'Вольт-амперная характеристика', fontsize=12)
 plt.grid(True)
-
+"""
 #############
 
 
@@ -93,4 +82,4 @@ plt.grid(True)
 #вывод
 plt.figure(1).savefig(usinp_title + 'e' + '.png')
 plt.figure(1).savefig(usinp_title + 'e' + '.pdf')
-plt.show()
+#plt.show()
