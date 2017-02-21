@@ -92,7 +92,7 @@ plt.grid(True)
 
 #############
 
-
+text(5, 300, "hello", fontsize=12)
 
 #вывод
 plt.figure(1).savefig(usinp_title + 'e' + '.png')
