@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import data
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,7 +8,7 @@ import numpy as np
 
 """
 
-usinp = (raw_input('-> '))#ввод имени, открываемого файла
+usinp = "21022017-2.dat"#ввод имени, открываемого файла
 #print "user input: ", type(usinp)
 len_usinp = len(str(usinp))
 #print type(len_usinp)
@@ -89,7 +88,7 @@ plt.grid(True)
 
 #############
 
-text(5, 300, "hello", fontsize=12)
+
 
 #вывод
 plt.figure(1).savefig(usinp_title + 'e' + '.png')
