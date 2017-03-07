@@ -4,20 +4,22 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 """
+07102016-2.dat
 
+14102016-1.dat
+
+14102016-2.dat
 
 """
-
-usinp = (raw_input('-> '))#ввод имени, открываемого файла print "user
-#input: ", type(usinp)
-#len_usinp = len(str(usinp))
+usinp = "28022017.dat"
+#usinp = (raw_input('-> '))#ввод имени, открываемого файла
+#print "user input: ", type(usinp)
+len_usinp = len(str(usinp))
 #print type(len_usinp)
-#usinp_e = usinp[0:-4] + 'e' + usinp[-4:len_usinp]
-usinp_e = usinp + 'e_cut'
-
+usinp_e = usinp[0:-4] + 'e' + usinp[-4:len_usinp]
 #print usinp_e
 #название файла без разширения, для отображения на граффике
-usinp_title = usinp
+usinp_title = usinp[0:-4]
 #
 s = open(usinp).read()#прочитали исходный файл
 
@@ -38,7 +40,7 @@ f.write(s)#записали
 f.close()#закрыли
 
 #создаем датафрэйм
-frame = pd.read_csv(usinp_e, sep = "\t", header = None, names = ['sec', 'mA', 'mV'], skiprows = 50)
+frame = pd.read_csv(usinp_e, sep = "\t", header = None, names = ['sec', 'mA', 'mV'], skiprows = 1)
 
 allarray = np.array(frame)
 #print allarray
@@ -51,35 +53,37 @@ mv = np.array(frame['mV'])
 data = mv
 #print x
 #print type(data)
+
+"""
 """
 
 """
-
 #зона вывода графф
-#plt.figure(num = 1, figsize=(10,6), dpi= 150)
-plt.suptitle(usinp_title, fontsize=16)
+#plt.suptitle(usinp_title, fontsize=16)
 #plt.subplots_adjust(hspace=0.4)#
 #первый графф
 plt.subplot(2,1,1)
 plt.plot(sec, ma)
 plt.xlabel('time, sec')
-plt.ylabel('I, micro A')
+plt.ylabel('I, mA')
 plt.title(u'Изменение тока по времени', fontsize=12)
 plt.grid(True)
-"""
 #второй графф
-plt.subplot(2,1,2)
-plt.plot(mv, ma, '-r')
-plt.xlabel('Volts, mV')
-plt.ylabel('I, mA')
-plt.title(u'Вольт-амперная характеристика', fontsize=12)
-plt.grid(True)
+#plt.subplot(2,1,2)
+#plt.plot(mv, ma, '-r')
+#plt.xlabel('Volts, mV')
+#plt.ylabel('I, mA')
+#plt.title(u'Вольт-амперная характеристика', fontsize=12)
+#plt.grid(True)
+
 """
-#############
+plt.suptitle(usinp_title, fontsize=16)
+plt.plot(sec, ma)
+plt.title(u'Изменение тока по времени', fontsize=12)
 
 
-
+plt.grid(True)
 #вывод
-plt.figure(1).savefig(usinp_title + 'e_cut' + '.png')
-plt.figure(1).savefig(usinp_title + 'e_cut' + '.pdf')
-#plt.show()
+#plt.figure(1).savefig(usinp_title + 'e' + '.png')
+#plt.figure(1).savefig(usinp_title + 'e' + '.pdf')
+plt.show()
